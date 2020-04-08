@@ -6,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 import sys
 import time
 import os
-
+import webbrowser
 
 def getWFSlot(productUrl):
    headers = {
@@ -34,12 +34,14 @@ def getWFSlot(productUrl):
             pass
          else:
             print('SLOTS OPEN!')
-            os.system('say "Slots for delivery opened!"')
+            #os.system('say "Slots for delivery opened!"')
+            webbrowser.open('https://www.youtube.com/watch?v=L3CWBI_qRzA')
             no_open_slots = False
             time.sleep(1400)
       except NoSuchElementException:
          print('SLOTS OPEN!')
-         os.system('say "Slots for delivery opened!"')
+        #  os.system('say "Slots for delivery opened!"')
+         webbrowser.open('https://www.youtube.com/watch?v=L3CWBI_qRzA')
          no_open_slots = False
          time.sleep(1400)
 
@@ -48,7 +50,8 @@ def getWFSlot(productUrl):
          open_slots = soup.find('div', class_ ='orderSlotExists').text()
          if open_slots != "false":
             print('SLOTS OPEN!')
-            os.system('say "Slots for delivery opened!"')
+            # os.system('say "Slots for delivery opened!"')
+            webbrowser.open('https://www.youtube.com/watch?v=L3CWBI_qRzA')
             no_open_slots = False
             time.sleep(1400)
       except AttributeError:
@@ -60,5 +63,4 @@ def getWFSlot(productUrl):
 
 
 getWFSlot('https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html?hasWorkingJavascript=1')
-
 
